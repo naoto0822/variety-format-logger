@@ -17,16 +17,23 @@ module VarietyFormat
       @format_type = value
       @formatter = pick_formatter(@format_type)
     end
-    
+
     private
 
     def pick_formatter(type)
-      # TODO
+      formatter = select_formatter_class(type)
+      formatter.new
     end
 
     def select_formatter_class(type)
-      # TODO
+      case type
+      when JSON_FORMAT
+        VarietyFormat::JSONFormatter
+      when LTSV_FORMAT
+        VarietyFormat::LTSVFormatter
+      else
+        ::Logger::Formatter
+      end
     end
-
-  end
-end
+  end # Logger
+end # VarietyFormat
