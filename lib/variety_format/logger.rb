@@ -7,30 +7,25 @@ module VarietyFormat
     DEFAULT_FORMAT = "VarietyFormat_Logger_Default".freeze
     JSON_FORMAT = "VarietyFormat_Logger_JSON".freeze
     LTSV_FORMAT = "VarietyFormat_Logger_LTSV".freeze
-    
-    FORMAT_LIST = [DEFAULT_FORMAT, JSON_FORMAT, LTSV_FORMAT].freeze
 
-    def initialize(*args)
-      @type = DEFAULT_FORMAT
-      pass_args = Marshal.load(Marshal.dump(args))
-      args.each{ |arg|
-        pass_args.delete(arg) if FORMAT_LIST.include?(arg)
-        @type = JSON_FORMAT if arg == JSON_FORMAT
-        @type = LTSV_FORMAT if arg == LTSV_FORMAT
-      }
-      super(pass_args)
+    def initialize(*)
+      super
+      self.format_type = DEFAULT_FORMAT
+    end
 
-      @formatter = pick_formatter(@type)
+    def format_type=(value)
+      @format_type = value
+      @formatter = pick_formatter(@format_type)
     end
     
+    private
+
     def pick_formatter(type)
       # TODO
     end
 
-    private
-
-    def select_formatter_class
-      # TODO:
+    def select_formatter_class(type)
+      # TODO
     end
 
   end
