@@ -1,5 +1,5 @@
 module VarietyFormat
-  class LTSVFormatter
+  class LTSVFormatter < ::Logger::Formatter
     def call(severity, time, progname, msg)
       to_ltsv(msg) + "\n"
     end
