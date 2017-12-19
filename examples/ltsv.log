@@ -1,2 +1,2 @@
-# Logfile created on 2017-12-20 00:00:56 +0900 by logger.rb/56815
-hoge:foo	hogehoge:foofoo
+# Logfile created on 2017-12-20 00:09:21 +0900 by logger.rb/56815
+gender:male	age:20	birth:1990/08/22	json:{"k1":"v1"}
