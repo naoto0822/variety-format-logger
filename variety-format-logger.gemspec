@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "variety_format/logger"
+require "variety_format/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "variety-format-logger"
-  spec.version       = VarietyFormat::Logger::VERSION
+  spec.version       = VarietyFormat::VERSION
   spec.authors       = ["naoto0822"]
   spec.email         = ["n.h.in.m.h@gmail.com"]
 
