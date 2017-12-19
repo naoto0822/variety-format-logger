@@ -1,28 +1,70 @@
-# Variety::Format::Logger
+# variety-format-logger
+[![Gem Version](https://badge.fury.io/rb/variety-format-logger.svg)](https://badge.fury.io/rb/variety-format-logger)
+[![Build Status](https://travis-ci.org/naoto0822/variety-format-logger.svg?branch=master)](https://travis-ci.org/naoto0822/variety-format-logger)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/naoto0822/variety-format-logger/blob/master/LICENSE.txt)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/variety/format/logger`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+output is Default or JSON or LTSV format.
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'variety-format-logger'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install variety-format-logger
-
 ## Usage
 
-TODO: Write usage instructions here
+### Default
+
+```ruby
+path = "./default.log"
+logger = VarietyFormat::Logger.new(path)
+logger.debug("sample logger")
+```
+
+output is following
+
+```
+D, [2017-12-20T00:09:21.549282 #5706] DEBUG -- : sample logger
+```
+
+### JSON
+
+```ruby
+path = "./json.log"
+logger = VarietyFormat::Logger.new(path)
+logger.format_type = VarietyFormat::Logger::JSON_FORMAT
+msg = {}
+msg["k1"] = "v1"
+msg["k2"] = "v2"
+msg["k3"] = "v3"
+logger.debug(msg)
+```
+
+output is following
+
+```
+{"k1":"v1","k2":"v2","k3":"v3"}
+```
+
+### LTSV
+
+```ruby
+path = "./ltsv.log"
+logger = VarietyFormat::Logger.new(path)
+logger.format_type = VarietyFormat::Logger::LTSV_FORMAT
+msg = {}
+msg["gender"] = "male"
+msg["age"] = 20
+msg["birth"] = "1990/08/22"
+msg["json"] = {"k1": "v1"}.to_json
+logger.debug(msg)
+```
+
+output is following
+
+```
+gender:male	age:20	birth:1990/08/22	json:{"k1":"v1"}
+```
 
 ## Development
 
