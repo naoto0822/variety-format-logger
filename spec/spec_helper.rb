@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "variety/format/logger"
+require "variety-format-logger"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
