@@ -1,8 +1,5 @@
 module VarietyFormat
   class Logger < ::Logger
-    # for gemspec
-    VERSION = "0.1.0".freeze
-
     # format type
     DEFAULT_FORMAT = "VarietyFormat_Logger_Default".freeze
     JSON_FORMAT = "VarietyFormat_Logger_JSON".freeze
